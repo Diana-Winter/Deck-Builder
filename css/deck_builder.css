@@ -1,0 +1,863 @@
+html {
+    overflow-y:scroll;
+}
+
+body {
+    margin: 0rem;
+    padding: 0rem;
+    color: #FFFFFF;
+    font-family: sans-serif, Arial;
+    background: url(../images/wallpaper.jpg), black;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: url(../images/wallpaper.jpg), black;
+    background-size: cover;
+    background-attachment: fixed;
+    background-clip: border-box;
+}
+
+#top_div {
+    justify-content: left;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, min-content), 1fr;
+}
+
+#weapon_div {
+    width: min-content;
+    display: inline-grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-template-rows: repeat(3, min-content);
+    grid-column-gap: 0.25rem;
+    grid-row-gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-right: solid thin white;
+}
+
+#bar_div {
+    justify-content: left;
+    display: inline-grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-template-rows: min-content;
+    grid-column-gap: 1rem;
+    padding: 0 0 0.25rem 0;
+    border-right: solid thin white;
+}
+
+#bar_info {
+    grid-column: span 2;
+    margin-left: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+#bar_active {
+    align-self: end;
+    grid-row-start: 2;
+    height: min-content;
+    display: inline-grid;
+    grid-template-columns: repeat(8, min-content);
+    grid-template-rows: min-content;
+    grid-column-gap: 0.15rem;
+    margin-left: 0.5rem;
+}
+
+#bar_passive {
+    align-self: end;
+    grid-row-start: 2;
+    height: min-content;
+    display: inline-grid;
+    vertical-align: bottom;
+    grid-template-columns: repeat(8, min-content);
+    grid-template-rows: min-content;
+    grid-column-gap: 0.15rem;
+    margin-right: 0.5rem;
+}
+
+#menu_div {
+    display: inline-grid;
+    width: min-content;
+    align-content: end;
+    border-right: solid thin white;
+    padding: 0.5rem;
+    padding-bottom: 0.25rem;
+}
+
+#info_div {
+    display: inline-grid;
+    height: 100%;
+    width: min-content;
+    justify-content: center;
+    text-align: center;
+    border-right: solid thin white;
+}
+
+#ap {
+    align-self: start;
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: black;
+    border-bottom: solid thin white;
+}
+
+#ap_caption {
+    display: inline-block;
+}
+
+#ap_cost {
+    display: inline-block;
+}
+
+#search {
+    align-self: end;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding: 0.25rem;
+    background-color: black;
+    border-top: solid thin white;
+    border-bottom: solid thin white;
+}
+
+#search_caption {
+    padding: 0.25rem;
+}
+
+#corner_close {
+    top: 0;
+    float: right;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#dialog {
+    position: fixed;
+    top: 15rem;
+    left: 0;
+    right: 0;
+    margin-left: 45%;
+    margin-right: auto;
+    width: min-content;
+    padding: 1rem;
+    padding-top: 0.25rem;
+    background-color: black;
+    border: solid thin white;
+    border-radius: 0.5rem;
+}
+
+#button_copy {
+    float: right;
+    margin-left: 0.5rem;
+}
+
+#button_ok {
+    float: right;
+}
+
+#corner_close {
+    float: right;
+    margin-top: 0.25rem;
+}
+
+button.dialog {
+    vertical-align: top;
+    font-size: large;
+    color: white;
+    width: 4rem;
+    margin: 0;
+    padding-top: 0.15rem;
+    box-sizing: border-box;
+    background: black url(../images/gradient_radio.svg);
+    border: solid 0.15rem #222222;
+    border-radius: 0.5rem;
+}
+
+    button.dialog.disabled {
+        background-image: none;
+        border-color: lightgray;
+        background-color: darkgray;
+    }
+
+    button.dialog.disabled:hover {
+        background-image: none;
+        border-color: lightgray;
+        background-color: darkgray;
+    }
+
+    button.dialog.disabled:active {
+            background-image: none;
+            border-color: lightgray;
+            background-color: darkgray;
+            padding-top: 0.15rem;
+            font-size: large;
+            box-shadow: none;
+        }
+
+button.dialog:hover {
+    background-image: url(../images/highlight.svg), url(../images/gradient_radio.svg);
+    border-color: #26B3F7;
+}
+
+    button.dialog:active {
+        padding-top: 0.25rem;
+        font-size: initial;
+        border-color: #26B3F7;
+        box-shadow: #050505 0.2rem 0.2rem inset;
+    }
+
+button.dialog.hidden {
+    display: none;
+}
+
+#dialog_caption {
+    font-size: larger;
+    text-align: left;
+    display: inline-block;
+    border-style: none;
+    line-height: 1.5rem;
+}
+
+#dialog_caption > .dialog_radio {
+    font-size: medium;
+}
+
+#dialog_text {
+    min-width: 40rem;
+    display: inline-block;
+    vertical-align: text-bottom;
+    display: inline-block;
+    font-size: larger;
+}
+
+#dialog_text.hidden {
+    display: none;
+}
+
+#dialog_text_block {
+    padding-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+#dialog_status {
+    text-align: center;
+    vertical-align: top;
+}
+
+#dialog_input {
+    font-size: medium;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    width: 42rem;
+}
+
+#dialog label {
+    padding: 0.25rem;
+    line-height: 1rem;
+}
+
+.radio_set .dialog_radio {
+    font-size: medium;
+    padding: 0;
+    line-height: 1rem;
+    min-height: 0;
+}
+
+button.menu {
+    font-size: large;
+    color: white;
+    width: 7rem;
+    height: 2rem;
+    padding: 0.5rem;
+    margin-top: 0.15rem;
+    background: black url(../images/gradient_radio.svg);
+    padding: 0.25rem 0.5rem;
+    border: solid 0.15rem #222222;
+    border-radius: 0.5rem;
+}
+
+    button.menu:active {
+        font-size: initial;
+        border-color: #444444;
+        box-shadow: #050505 0.2rem 0.2rem inset;
+    }
+
+button.menu:hover {
+    background-image: url(../images/highlight.svg), url(../images/gradient_radio.svg);
+    border-color: #26B3F7;
+}
+
+.radio_accordion {
+    display: inline-grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    width: 100%;
+    min-width: 105rem;
+    overflow-x: clip;
+}
+
+.accordion_layout {
+    vertical-align: top;
+    text-align: center;
+    display:inline-block;
+    min-width: 35rem;
+}
+
+.radio_set {
+    width: 100%;
+    display: inline-block;
+    min-height: 1.8rem;
+    text-align: center;
+    border: solid thin white;
+    border-right: solid thin white;
+    border-bottom: solid thin white;
+    background: black;
+    padding: 0.2rem 0rem;
+}
+
+.radio_set input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.radio_label {
+    display:inline-block;
+    padding-right: 1rem;
+}
+
+.radio_set label {
+    display: inline-block;
+    background: black url(../images/gradient_radio.svg);
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #444444;
+}
+
+    .radio_set label:first-of-type {
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+
+    .radio_set label:last-of-type {
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+
+.radio_set input[type="radio"]:checked + label {
+    background: #0972A5;
+    border-color: #26B3F7;
+}
+
+.radio_set label:hover {
+    background-image: url(../images/highlight.svg), url(../images/gradient_radio.svg);
+    border-color: #26B3F7;
+}
+
+.accordion {
+    justify-self: center;
+    display: inline-block;
+    text-align:center;
+    width: 95%;
+    cursor: pointer;
+}
+
+.acc_triangle {
+    align-self: center;
+    float: left;
+    height: 1rem;
+    margin: 0.05rem 1.25rem 0rem 1rem;
+}
+
+.acc_header.active .acc_triangle {
+    content: url(../images/triangle_black.svg);
+    transform: rotate(90deg);
+    margin-top: 0.1rem;
+}
+
+.acc_header.active + .acc_content {
+    display: inline-block;
+}
+
+.acc_header {
+    width: 100%;
+    margin-top: 0.1rem;
+    padding: 0.25rem 0 0.25rem 0;
+    background: black url(../images/gradient_radio.svg);
+    border: solid thin #555555;
+    border-radius: .5em;
+    display: block;
+    text-align: left;
+}
+
+    .acc_header.active {
+        background: #0972A5;
+        border-color: #26B3F7;
+        border-bottom-color: #0972A5;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .acc_header:hover {
+        background-image: url(../images/highlight.svg), url(../images/gradient_radio.svg);
+        border-color: #26B3F7;
+    }
+
+    .acc_header.active:hover {
+        background: #0972A5;
+        border-bottom-color: #0972A5;
+    }
+
+.acc_content_separator {
+    font-weight: bold;
+    padding: 0.25em;
+    background: #444444;
+}
+
+.acc_content {
+    display: none;
+    width: 100%;
+    background-color: black;
+    border: solid thin #555555;
+    border-top-style: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.ability {
+    line-height: 1.3;
+    box-sizing: border-box;
+    text-align: left;
+    display: inline-block;
+    min-height: 4rem;
+    width: 100%;
+    padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+    border-top: solid thin #555555;
+}
+
+    .ability .icon {
+        float: left;
+        height: 3.8rem;
+        width: 3.8rem;
+        margin-bottom: 0.2rem;
+        margin-right: 0.5em;
+    }
+
+        .ability .icon.purple ~ .cast {
+            display: none;
+        }
+
+        .ability .icon.purple ~ .cooldown {
+            display: none;
+        }
+
+        .ability .icon:not(.purple) ~ .type {
+            display: none;
+        }
+
+    .ability .name {
+        display: inline-block;
+        width: 15rem;
+        font-weight: bold; 
+        margin-bottom: 0.25rem;
+    }
+
+    .ability .cast {
+        display: inline-block;
+        background-image: url(../images/cast.svg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 1rem;
+        padding-left: 1.3rem;
+        margin-right: 0.5rem;
+    }
+
+    .ability .cooldown {
+        display: inline-block;
+        background-image: url(../images/cooldown.svg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 0.8rem;
+        padding-left: 1.2rem;
+    }
+
+    .ability .type {
+        display: inline-block;
+        float: right;
+        margin-right: 5rem;
+        font-style: italic;
+    }
+
+    .ability .cost {
+        float: right;
+        text-align: right;
+        width: 3rem;
+    }
+    .cost.adjust {
+        margin-bottom: 1.3rem;
+    }
+
+    .ability .description {
+        text-align: left;
+        clear: right;
+        line-height: 1.4rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .ability .path {
+        clear: left;
+        text-align: center;
+        padding-top: 0.3rem;
+        border-top: solid thin #555555;
+    }
+
+.hidden {
+    display: none;
+}
+
+.acc_content.cell > .ability > .path {
+    display: none;
+}
+
+.acc_content.weapon > .ability > .path {
+    display: none;
+}
+ 
+.acc_wrapper:has(.ability:not(.hidden)) {
+    display: block;
+}
+
+.icon {
+    height: 4rem;
+    width: 4rem;
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+    border-width: 0.15rem;
+    border-radius: 0.5rem;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#weapon_div .icon {
+    height: 3rem;
+    width: 3rem;
+    box-sizing: border-box;
+    border-width: 0;
+}
+
+#tooltip {
+    position: fixed;
+    width: 30rem;
+    background-color : black;
+    border: solid thin white;
+    border-radius: 0.5rem;
+    z-index: 30;
+}
+
+#tooltip .icon {
+    display: none;
+}
+
+.empty {
+    border-width: 0.15rem;
+    border-color: gray;
+    background-color: lightgray;
+    background-image: url(../images/ridges.svg), url(../images/gradient_icon.svg);
+}
+
+.auxillary {
+    border-color: #B0B0B0;
+    background-color: white;
+    background-image: url(../images/ridges.svg), url(../images/gradient_aux.svg);
+}
+
+.glossy {
+    background-image: url(../images/glow_bottom.svg), url(../images/gloss_top.svg);
+}
+
+.red {
+    background-color: #910000;
+    border-color: #910000;
+}
+
+    .red.clicked {
+        border-color: #B30000;
+        background-image: none;
+        box-shadow: #660000 0.15rem 0.15rem inset;
+    }
+
+#dialog .red {
+    font-weight: bold;
+    background-color: black;
+    color: #FF0000;
+}
+
+.brown {
+    background-color: #893900;
+    border-color: #893900;
+}
+
+    .brown.clicked {
+        border-color: #B35900;
+        background-image: none;
+        box-shadow: #331A00 0.15rem 0.15rem inset;
+    }
+
+.blue {
+    border-color: #0047AB;
+    background-color: #0047AB;
+}
+
+    .blue.clicked {
+        border-color: royalblue;
+        background-image: none;
+        box-shadow: darkblue 0.15rem 0.15rem inset;
+    }
+
+#weapon_div .clicked {
+    box-sizing: border-box;
+    border-width: 0.1rem;
+    border-style: solid;
+    padding: 0.1em;
+}
+
+.purple {
+    background-color: #5C1F7A;
+    border-color: #5C1F7A;
+}
+
+.green {
+    background-color: #168F00;
+    border-color: #168F00;
+}
+
+.teal {
+    background-color: #0088A8;
+    border-color: #0088A8;
+}
+
+#bar_div .icon {
+    margin-left: 0.15rem;
+    border-radius: 0.8rem;
+}
+
+#bar_active .icon {
+    box-sizing: border-box;
+    height: 4.3rem;
+    width: 4.3rem;
+    border-width: 0;
+}
+
+.ability .icon {
+    box-sizing: content-box;
+    border-width: 0;
+}
+
+.elite {
+    border-color: gold;
+}
+
+.ability .icon.elite {
+    border-width: 0.15rem;
+}
+
+#bar_active .elite {
+    box-sizing: border-box;
+    border-width: 0.15rem;
+}
+
+#bar_div .empty {
+    border-width: 0.15rem;
+}
+
+#bar_div .purple {
+    border-color: white;
+    background-color: #9933CC;
+    background-image: url(../images/ridges.svg), url(../images/gradient_icon.svg);
+}
+
+#bar_div .elite {
+    border-color: gold;
+}
+
+.droptarget {
+    border: solid 0.15rem #26B3F7;
+}
+
+#bar_active .droptarget {
+    border: solid 0.15rem #26B3F7;
+}
+
+#bar_passive .droptarget {
+    border: solid 0.15rem #26B3F7;
+}
+
+.dragover {
+    background-color: #0088A8;
+    border: solid 0.15rem #26B3F7;
+}
+
+#bar_passive .dragover {
+    background-color: #0088A8;
+    border: solid 0.15rem #26B3F7;
+}
+
+.disabled {
+    border-color: lightgray;
+    background-color: darkgray;
+}
+
+.ability_subtype {
+    text-decoration: underline;
+    color: #00BBFF;
+    font-weight: bold;
+}
+
+.ability_state {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.ability_damage {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.ability_heal {
+    color: #00FF00;
+    font-weight: bold;
+}
+
+.ability_buff {
+    color: #8888FF;
+    font-weight: bold;
+}
+
+.ability_resource {
+    color: #FFAA22;
+    font-weight: bold;
+}
+
+.ability_time {
+    color: #FFAA22;
+    font-weight: bold;
+}
+
+.ability_stack {
+    color: #FFAA22;
+    font-weight: bold;
+}
+
+.ability_chain {
+    color: #FFAA22;
+    font-weight: bold;
+}
+
+.weapon_tooltip {
+    font-size: large;
+    padding: 0.25rem;
+    text-align: center;
+    border-bottom: solid thin white;
+}
+
+.wt_heading {
+    background-color: gray;
+    text-align:center;
+    padding: 0.15rem;
+}
+
+#wt_table {
+    width: 100%;
+}
+
+    #wt_table td {
+        padding-top: 0.20rem;
+        padding-bottom: 0.20rem;
+    }
+
+#wt_table td[colspan="2"] {
+    padding: 0.20rem;
+    text-align: center;
+}
+
+    #wt_table td.wt_strong {
+        background-color: #006000;
+        width: 4.2rem;
+        padding-left: 0.4rem;
+    }
+
+    #wt_table td.wt_average {
+        background-color: #004500;
+        width: 4.2rem;
+        padding-left: 0.4rem;
+    }
+
+    #wt_table td.wt_weak {
+        background-color: #003000;
+        width: 4.2rem;
+        padding-left: 0.4rem;
+    }
+
+#table_info {
+    text-align: center;
+    border-collapse: collapse;
+    border-top: none;
+}
+
+.ti_header {
+    border-top: none;
+    text-align: center;
+}
+
+#table_info td {
+    margin: 0;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-left: solid thin white;
+    border-right: solid thin white;
+    border-bottom: solid thin white;
+}
+
+#table_info tr {
+    margin: 0;
+    background-color: black;
+}
+
+.apply {
+    background-color: #0047AB;
+}
+
+.react {
+    background-color: #0088A8;
+}
+
+.applyreact {
+    background-color: #168F00;
+}
+
+.synergy {
+    background-color: #002500;
+}
+
+#search_results {
+    cursor: pointer;
+    position: fixed;
+    background-color: black;
+    width: 30rem;
+    padding: 0.5rem;
+    border: solid thin white;
+    border-radius: 0.5rem;
+    z-index: 15;
+}
+
+#search_results:empty {
+    display: none;
+}

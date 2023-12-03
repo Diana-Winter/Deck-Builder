@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <title>Deck Builder</title>
+    <link rel="stylesheet" href="css/deck_builder.css">
+    <script type="text/javascript" src="js/deck_builder.js" defer></script>
+    <script type="text/javascript" src="js/wheel.js" defer></script>
+    <script type="text/javascript" src="js/abilities/assault_rifle.js" defer></script>
+    <script type="text/javascript" src="js/abilities/blade.js" defer></script>
+    <script type="text/javascript" src="js/abilities/blood.js" defer></script>
+    <script type="text/javascript" src="js/abilities/chaos.js" defer></script>
+    <script type="text/javascript" src="js/abilities/elemental.js" defer></script>
+    <script type="text/javascript" src="js/abilities/fist.js" defer></script>
+    <script type="text/javascript" src="js/abilities/hammer.js" defer></script>
+    <script type="text/javascript" src="js/abilities/pistols.js" defer></script>
+    <script type="text/javascript" src="js/abilities/shotgun.js" defer></script>
+    <script type="text/javascript" src="js/abilities/other.js" defer></script>
+    <script type="text/javascript" src="js/ui.js" defer></script>
+</head>
+<body>
+    <div id="header">
+        <div id="top_div">
+            <div id="weapon_div"></div>
+            <div id="bar_div">
+                <div id="bar_info">&nbsp;</div>
+                <div id="bar_active"></div>
+                <div id="bar_passive"></div>
+            </div>
+            <div id="menu_div">
+                <button id="reset" class="menu" onclick="resetClick()">Reset</button>
+                <button id="link" class="menu" onclick="exportClick()">Export</button>
+                <button id="import" class="menu" onclick="importClick()">Import</button>
+                <button id="display" class="menu" onclick="displayClick()">Display</button>
+            </div>
+            <div id="info_div">
+                <div id="ap">
+                    <div id="ap_caption">Total Cost:</div>
+                    <div id="ap_cost">0 AP</div>
+                </div>
+                <div id="search">
+                    <div id="search_caption"><label for="search_input">Basic Ability Search:</label></div>
+                    <div id="search_box"><input title="search" id="search_input" type="text" onchange="searchChange()" onkeyup="searchChange()" /></div>
+                </div>
+            </div>
+        </div>
+        <div id="radio_div" class="radio_accordion">
+            <div id="radio_div_w0" class="radio_set">&nbsp;</div>
+            <div id="radio_div_w1" class="radio_set">&nbsp;</div>
+            <div id="radio_div_w2" class="radio_set">&nbsp;</div>
+        </div>
+    </div>
+    <div id="tooltip" class="tooltip"></div>
+    <div id="search_results" class="results"></div>
+    <div id="dialog" class="dialog">
+        <div id="corner_close" onclick="closeDialog()">X</div>
+        <div id="dialog_caption_outer"><label for="dialog_input" id="dialog_caption" class="radio_set"></label></div>
+        <div id="dialog_text">
+            <button id="button_copy" class="dialog" onclick="copyDialog()">Copy</button>
+            <div id="dialog_text_block"></div>
+        </div>
+        <div><input title="dialog_import" type="text" id="dialog_input" class="menu" oninput="importInput()"></div>
+        <button id="button_ok" class="dialog" onclick="importDialog()">Ok</button>
+        <div id="dialog_status">&nbsp;</div>
+    </div>
+    <div id="accordion_div" class="radio_accordion">
+        <div id="accordion_w0" class="accordion">&nbsp;</div>
+        <div id="accordion_w1" class="accordion">&nbsp;</div>
+        <div id="accordion_w2" class="accordion">&nbsp;</div>
+    </div>
+</body>
+</html>
