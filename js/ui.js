@@ -229,6 +229,7 @@ function assignAbility(bar, idx, a) {
     }
 
     sa.gid = a.gid;
+    sa.name = a.name;
     sa.cost = a.cost;
     sa.tier = a.tier;
     sa.weapon = a.weapon;
@@ -702,6 +703,49 @@ async function searchAbilities({ signal } = {}) {
     var s = document.getElementById("search_input").value;
     if (s.length < 3) return;
     TSW.AbilityMap.forEach(compareAbilityName);
+}
+
+function displayClick() {
+    const d = document.getElementById("dialog_text_block");
+    document.getElementById("dialog_caption").innerHTML = "<span id=\"import\" class=\"radio_label\">Display Information:</span>";
+    document.getElementById("dialog_text_block").innerText = "";
+    document.getElementById("dialog_text").classList.remove("hidden");
+    document.getElementById("dialog_input").classList.add("hidden");
+    document.getElementById("dialog_input").value = "";
+    document.getElementById("button_ok").classList.add("hidden");
+    document.getElementById("button_ok").classList.add("disabled");
+    document.getElementById("button_copy").classList.remove("hidden");
+
+    var str = "";
+    str += "<b>Weapons:</b> ";
+    for (let i = 0; i < TSW.SelectedWeapons.length; i++) {
+        if (TSW.SelectedWeapons[i] > 0) {
+            if (i == 1) str += "/";
+            str += TSW.Wheel[TSW.SelectedWeapons[i]].name;
+        }
+    }
+    str += " (" + document.getElementById("ap_cost").innerText + ")<br><br>";
+    str += "<b>Actives</b><br>";
+    for (let i = 0; i < 2; i++) {
+        if (i == 1) str += "<b>Passives</b><br>";
+        for (let j = 0; j < 8; j++) {
+            str += (j + 1) + ". ";
+            if (TSW.SelectedAbilities[i][j].gid > 0) {
+                str += TSW.SelectedAbilities[i][j].name;
+            } else {
+                str += "Empty";
+            }
+            str += "<br>";
+        }
+        str += "<br>"
+    }
+
+    str += "<b>DB/VDM</b><br>";
+    str += toDBString() + "<br><br>";
+    str += toVDMString() + "<br>";
+
+    d.innerHTML = str;
+    showDialog();
 }
 
 function compareAbilityName(value, key, map) {
