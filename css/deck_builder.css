@@ -861,3 +861,14 @@ button.menu:hover {
 #search_results:empty {
     display: none;
 }
+
+#legend_div {
+    width: 10rem;
+    padding: 0.5rem;
+}
+
+.legend {
+    padding: 0.5rem;
+    text-align: center;
+    border: solid thin white;
+}

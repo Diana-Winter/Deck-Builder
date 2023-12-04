@@ -22,6 +22,7 @@ function clickWeapon(index) {
         var e = document.getElementById("accordion_w0");
         e.innerHTML = TSW.Wheel[index].accordions[0];
         hideSelectedAll(e);
+        highlightSynergyAll(e);
         disableWeapons();
         return selectWeapon(index);
     }
@@ -31,6 +32,7 @@ function clickWeapon(index) {
         var e = document.getElementById("accordion_w1");
         e.innerHTML = TSW.Wheel[index].accordions[0];
         hideSelectedAll(e);
+        highlightSynergyAll(e);
         disableWeapons();
         return selectWeapon(index);
     }
@@ -522,11 +524,19 @@ function abilityDragEnd(evt) {
 }
 
 function highlightSynergy(e, attr) {
-    e.querySelectorAll(attr).forEach((element) => (element).classList.add("synergy"));
+    var arr = e.querySelectorAll(attr);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] != undefined)
+            arr[i].classList.add("synergy");
+    }
 }
 
 function removeSynergy() {
-    document.querySelectorAll('*').forEach((element) => (element).classList.remove("synergy"));
+    var arr = document.querySelectorAll('*');
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] != undefined)
+            arr[i].classList.remove("synergy");
+    }
 }
 
 function highlightSynergyAll(e) {
@@ -541,7 +551,11 @@ function highlightSynergyAll(e) {
 }
 
 function hideSelected(e, gid) {
-    e.querySelectorAll("[gid=\"" + gid + "\"]").forEach((element) => (element).classList.add("hidden"));
+    var arr = document.querySelectorAll("[gid=\"" + gid + "\"]");
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] != undefined)
+            arr[i].classList.add("hidden");
+    }
 }
 
 function hideSelectedAll(e) {
@@ -555,7 +569,11 @@ function hideSelectedAll(e) {
 }
 
 function unhideSelected(gid) {
-    document.querySelectorAll("[gid=\"" + gid + "\"]").forEach((element) => (element).classList.remove("hidden"));
+    var arr = document.querySelectorAll("[gid=\"" + gid + "\"]");
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] != undefined)
+            arr[i].classList.remove("hidden");
+    }
 }
 
 function hideToolTip() {
@@ -700,9 +718,11 @@ function searchChange() {
 }
 
 async function searchAbilities({ signal } = {}) {
+    const r = document.getElementById("search_results");
     var s = document.getElementById("search_input").value;
     if (s.length < 3) return;
     TSW.AbilityMap.forEach(compareAbilityName);
+    highlightSynergyAll(r);
 }
 
 function displayClick() {
@@ -762,10 +782,3 @@ buildAccordions();
 buildWeaponPicker();
 buildBars();
 buildRadioSets();
-
-// DB:12100102606300302700800030601103101305901210510061
-// http://www.tsw-builder.com/#51v550g16522104165531135a10p236421612210834141143a11
-// VDM%-%6388280%-%undefined%-%6388361%-%undefined%-%6388986%-%undefined%-%undefined%-%8102554%-%6389445%-%undefined%-%6399186%-%undefined%-%undefined%-%6390189%-%undefined%-%8102575
-// index.html#51v500_502_504__a00p501_503__505_a01
-// DB:00100102606300302700000030601103101305901210510061
-// DB:00100102606300302700000030601103101305901210510061

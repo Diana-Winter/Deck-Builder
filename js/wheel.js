@@ -314,6 +314,7 @@ function buildWeaponWheel() {
                 for (let m in a.modifiers) {
                     let mo = a.modifiers[m][0];
                     if (mo[0] == 2 && mo[1] == 3) continue;
+                    if (mo[0] == 2 && mo[1] == 7) continue;
                     if (mo[0] == 3 && mo[1] == 8) continue;
                     a.synergies.push([TSW.Modifiers[mo[0]][mo[1]], a.modifiers[m][1]]);
                 }
